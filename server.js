@@ -1,16 +1,24 @@
 const express = require('express');
-
 const app = express();
+const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
+var cors = require('cors')
+var Content = require('./models/content')
+var Category = require('./models/category')
+var User = require('./models/user')
+var Session = require('./models/session')
+var UserRoute = require('./routes/user')
 
-app.get('/api/customers', (req, res) => {
-    const customers = [
-        {id: 1, firstName: 'Sean', lastName: 'Cahill'},
-        {id: 2, firstName: 'John', lastName: 'Wall'},
-        {id: 1, firstName: 'Dustin', lastName: 'Moskovitz'}
 
-    ];
-    res.json(customers);
-})
+app.use(cors());
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}));
+
+mongoose.connect("mongodb://localhost/spirout", {
+    useMongoClient: true,
+});
+
+app.use(UserRoute);
 
 const port = 5000;
 
