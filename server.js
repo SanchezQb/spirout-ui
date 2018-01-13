@@ -14,6 +14,7 @@ var contentRoute = require('./routes/content')
 var categoryRoute = require('./routes/category')
 var searchRoute = require('./routes/search')
 var getContent = require('./test')
+var Seed = require('./seeds')
 
 
 app.use(cors());
@@ -28,6 +29,8 @@ app.use(UserRoute);
 app.use(contentRoute);
 app.use(searchRoute);
 app.use(categoryRoute);
+
+Seed()
 
 const port = 5000;
 

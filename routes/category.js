@@ -5,6 +5,12 @@ var Category = require('../models/category')
 var Session = require('../models/session')
 var User = require('../models/user')
 
+router.get('/', function(req, res){
+Category.find({}, function(err, categories){
+  if(err){
+    console.log(err)}
+else {res.json({categories: categories})}})})
+
 router.get('/category/:id', function(req, res){
 Category.findById(req.params.id, function(err, selectedcategory){
 if(err) {
@@ -16,8 +22,6 @@ if(err) {
 console.log(err)}
 else { res.json({category: selectedcategory, content: category_content, status: 500 })}})}
 else { res.json({ category:null, content: null, status:504 })}}})})
-
-
 
 
 router.delete('/category/:id', function(req, res){
