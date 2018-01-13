@@ -8,7 +8,10 @@ var UserSchema = new mongoose.Schema({
     password: String,
     phone: Number,
     isAdmin: Boolean,
-    forgot_password: String
+    forgot_password: String,
+    confirmed_email: Boolean,
+    purchased: [],
+    passwordcount: Number
 })
 
 var User = mongoose.model('User', UserSchema)

@@ -1,8 +1,12 @@
 var mongoose = require('mongoose')
 
+
 var ContentSchema = new mongoose.Schema({
     name: String,
-    category: mongoose.Schema.Types.ObjectId,
+    description: String,
+    filename: String,
+    category: String,
+    type: String, 
     creator: mongoose.Schema.Types.ObjectId,
     price: Number,
     download_url: String,

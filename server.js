@@ -5,9 +5,15 @@ const bodyParser = require('body-parser')
 var cors = require('cors')
 var Content = require('./models/content')
 var Category = require('./models/category')
+var Request = require('./models/request')
+var Token = require('./models/token')
 var User = require('./models/user')
 var Session = require('./models/session')
 var UserRoute = require('./routes/user')
+var contentRoute = require('./routes/content')
+var categoryRoute = require('./routes/category')
+var searchRoute = require('./routes/search')
+var getContent = require('./test')
 
 
 app.use(cors());
@@ -19,6 +25,9 @@ mongoose.connect("mongodb://localhost/spirout", {
 });
 
 app.use(UserRoute);
+app.use(contentRoute);
+app.use(searchRoute);
+app.use(categoryRoute);
 
 const port = 5000;
 
