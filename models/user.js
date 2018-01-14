@@ -9,7 +9,6 @@ var UserSchema = new mongoose.Schema({
     phone: Number,
     isAdmin: Boolean,
     forgot_password: String,
-    confirmed_email: Boolean,
     purchased: [],
     passwordcount: Number
 })

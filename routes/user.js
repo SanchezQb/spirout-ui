@@ -104,7 +104,7 @@ if(err){
 console.log(err)}
 else {
 //send the email to confirm email and then create the token
-var string = `${anewuser._id}${anewuser.username}${anewuser.confirm_email}idontloveyoulikekanyeloveskanye`
+var string = `${anewuser._id}${anewuser.username}${anewuser.email}idontloveyoulikekanyeloveskanye`
 var auth = hashCode(string)
 var url = `http://localhost:5000/confirm/email?uid=${anewuser._id}&authKey=${auth}`
 var message= `<div> <h6> Hello, here's the link to confirm your email </br> <strong> ${url} <strong> </h6><div>`
@@ -294,7 +294,7 @@ if(err){
 console.log(err) }
 else {
    if(user !== null) {
-var string = `${req.query.uid}${user.username}${user.confirm_email}idontloveyoulikekanyeloveskanye`
+var string = `${req.query.uid}${user.username}${user.email}idontloveyoulikekanyeloveskanye`
 var validator = hashCode(string)
 if(validator == req.query.authKey){
 Token.findOne({value: req.query.authKey}, function(err, token){
