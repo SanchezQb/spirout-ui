@@ -115,7 +115,7 @@ var token = {value: auth,user_id: anewuser._id,content_id: null,type: 'Confirm-E
 Token.create(token, function(err, newtoken){
 if(err) {
 console.log(err)}
-else {res.json({user: anewuser, session_id: newsession._id, status:600, token:newtoken})}})}})}})}}})}}})})
+else {res.json({currentuser: anewuser, session_id: newsession._id, status:500, token:newtoken})}})}})}})}}})}}})})
 
 
 
@@ -139,13 +139,13 @@ if(err) {
 console.log(err) }
 else {
 //successful login
-res.json({ session_id: newsession._id, user: user, status: 500})}})}
+res.json({ session_id: newsession._id, currentuser: user, status: 500})}})}
 else {
 //Do something if the passwords do not match || prompt a forgot password ting
-res.json({user: user, status: 506, message: 'The passwords do not match'})}}
+res.json({user: user, status: 506, message: 'Invalid Username/password combination'})}}
 else {
 //ask to create account
-res.json({status: 504, message: 'Nah we dont have anyone we that username'})}}})})
+res.json({status: 504, message: 'Oops the user doesnt exist'})}}})})
 
 
 //  =========================================================================================================
@@ -204,16 +204,29 @@ res.json({ currentuser: session.currentuser, status: 500})
 }}})})
 
   //EDIT USER LOGIC
-router.put('/:sessionid/edit', function(req, res){
-var session = sessionize(req.params.sessionid)
-if(session !== null) {
-User.findByIdAndUpdate(session.currentuser._id, {$set:req.body}, function(err, updateduser){
-if(err) {
-console.log(err) }
-else {
-res.json({status: 500, message: 'successfully updated', currentuser: updateduser})}})}
-else { res.json({ status: 506, message: "you're not authorized to do that", currentuser: null})}})
+// router.put('/:sessionid/edit', function(req, res){
+// var session = sessionize(req.params.sessionid)
+// if(session !== null) {
+// User.findByIdAndUpdate(session.currentuser._id, {$set:req.body}, function(err, updateduser){
+// if(err) {
+// console.log(err) }
+// else {
+// res.json({status: 500, message: 'successfully updated', currentuser: updateduser})}})}
+// else { res.json({ status: 506, message: "you're not authorized to do that", currentuser: null})}})
 
+router.put('/:sessionid/edit', function(req, res){
+Session.findById(req.params.sessionid, function(err, currentsession){
+if(err) {
+console.log(err)}
+else {
+if(currentsession == null){
+res.json({ status: 506, message: 'You have to be logged in to do that'})}
+else {
+User.findByIdAndUpdate(currentsession.user_id, {$set:req.body}, function(err, updateduser){
+if(err){
+console.log(err)}
+else {
+res.json({status: 500, currentuser: updateduser, currentsession: currentsesion})}})}}})})
 
 //  ==============================================================================
 

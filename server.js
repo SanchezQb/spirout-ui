@@ -30,7 +30,7 @@ app.use(contentRoute);
 app.use(searchRoute);
 app.use(categoryRoute);
 
-Seed()
+// Seed()
 
 const port = 5000;
 
