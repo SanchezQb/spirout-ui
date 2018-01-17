@@ -306,12 +306,17 @@ token.valid = true
 token.remove() //you could remove this instead
 user.confirmed_email = true
 user.save()
-res.json({status: 500, message: 'Nice one, thanks for confirming your email'})}
-else { res.json({status: 504, message: 'This link might be broken'}) }}})}
+res.render('../views/success.ejs') }
+//res.json({status: 500, message: 'Nice one, thanks for confirming your email'})}
+else {
+  res.render('../views/failure.ejs')
+
+ }}})}
 else { //do something if the authkey is not the one expected
-res.json({status: 504, message: 'This URL seems to be invalid'})}}
+  res.render('../views/failure.ejs') 
+}}
 else { //do something if the user doesnt exist
-res.json({status: 508, message: 'This user doesnt exist'})}}})})
+  res.render('../views/failure.ejs') }}})})
 
 
 

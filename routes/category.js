@@ -11,16 +11,22 @@ Category.find({}, function(err, categories){
     console.log(err)}
 else {res.json({categories: categories})}})})
 
+
 router.get('/category/:id', function(req, res){
+  console.log('hello you called me')
 Category.findById(req.params.id, function(err, selectedcategory){
 if(err) {
 console.log(err)}
 else {
+  console.log(selectedcategory)
 if(selectedcategory !== null) {
-Content.find({category: selectedcategory._id}, function(err, category_content){
+  
+Content.find({category: selectedcategory.name}, function(err, category_content){
 if(err) {
 console.log(err)}
-else { res.json({category: selectedcategory, content: category_content, status: 500 })}})}
+else {
+  console.log(category_content)
+  res.json({category: selectedcategory, content: category_content, status: 500 })}})}
 else { res.json({ category:null, content: null, status:504 })}}})})
 
 

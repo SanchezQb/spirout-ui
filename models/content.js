@@ -7,7 +7,7 @@ var ContentSchema = new mongoose.Schema({
     filename: String,
     category: String,
     type: String, 
-    creator: mongoose.Schema.Types.ObjectId,
+    creator: String,
     price: Number,
     download_url: String,
     preview_url: []

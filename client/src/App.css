@@ -1,151 +1,455 @@
- body
- {
-   margin: 0;
-   padding: 0;
-   
-   /* make it look decent enough */
-   background: #232323;
-   color: #cdcdcd;
-   font-family: "Avenir Next", "Avenir", sans-serif;
- }
- 
- a
- {
-   text-decoration: none;
-   color: #232323;
-   
-   transition: color 0.3s ease;
- }
- 
- a:hover
- {
-   color: tomato;
- }
- 
- #menuToggle
- {
-   display: block;
-   position: relative;
-   top: 50px;
-   left: 50px;
-   
-   z-index: 1;
-   
-   -webkit-user-select: none;
-   user-select: none;
- }
- 
- #menuToggle input
- {
-   display: block;
-   width: 40px;
-   height: 32px;
-   position: absolute;
-   top: -7px;
-   left: -5px;
-   
-   cursor: pointer;
-   
-   opacity: 0; /* hide this */
-   z-index: 2; /* and place it over the hamburger */
-   
-   -webkit-touch-callout: none;
- }
- 
- /*
-  * Just a quick hamburger
-  */
- #menuToggle span
- {
-   display: block;
-   width: 33px;
-   height: 4px;
-   margin-bottom: 5px;
-   position: relative;
-   
-   background: #cdcdcd;
-   border-radius: 3px;
-   
-   z-index: 1;
-   
-   transform-origin: 4px 0px;
-   
-   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-               background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-               opacity 0.55s ease;
- }
- 
- #menuToggle span:first-child
- {
-   transform-origin: 0% 0%;
- }
- 
- #menuToggle span:nth-last-child(2)
- {
-   transform-origin: 0% 100%;
- }
- 
- /* 
-  * Transform all the slices of hamburger
-  * into a crossmark.
-  */
- #menuToggle input:checked ~ span
- {
-   opacity: 1;
-   transform: rotate(45deg) translate(-2px, -1px);
-   background: #232323;
- }
- 
- /*
-  * But let's hide the middle one.
-  */
- #menuToggle input:checked ~ span:nth-last-child(3)
- {
-   opacity: 0;
-   transform: rotate(0deg) scale(0.2, 0.2);
- }
- 
- /*
-  * Ohyeah and the last one should go the other direction
-  */
- #menuToggle input:checked ~ span:nth-last-child(2)
- {
-   transform: rotate(-45deg) translate(0, -1px);
- }
- 
- /*
-  * Make this absolute positioned
-  * at the top left of the screen
-  */
- #menu
- {
-   position: absolute;
-   width: 300px;
-   margin: -100px 0 0 -50px;
-   padding: 50px;
-   padding-top: 125px;
-   
-   background: #ededed;
-   list-style-type: none;
-   -webkit-font-smoothing: antialiased;
-   /* to stop flickering of text in safari */
-   
-   transform-origin: 0% 0%;
-   transform: translate(-100%, 0);
-   
-   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
- }
- 
- #menu li
- {
-   padding: 10px 0;
-   font-size: 22px;
- }
- 
- /*
-  * And let's slide it in from the left
-  */
- #menuToggle input:checked ~ ul
- {
-   transform: none;
- }
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.p {
+  margin-top: 140px;
+  text-align: center;
+}
+.nav {
+  background:#34495E;
+}
+.btn {
+  background: teal;
+}
+i {
+  color: yellow;
+}
+/* .card {
+  background: #fff;
+  height: 200px
+} */
+.right {
+  margin-right: 1.5%;
+}
+h6 {
+  margin: 5%;
+  color: teal;
+}
+.close {
+  cursor: pointer;
+}
+.request {
+  color: #000;
+}
+.category {
+  background: #eee;
+  margin-bottom: 40px
+}
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #121313; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+
+}
+#description{ 
+  height: 100px !important
+} 
+#form-ting { 
+  margin-top: 50px; 
+  margin-left: 30%
+}
+#overlay {
+  position: absolute;
+  background: black;
+  opacity: 0.5;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+
+}
+
+.centered {
+  position: absolute;
+   top: 45%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   color: white;
+   z-index: 3;
+   font-size: 70px;
+
+}
+.form-control {
+  width: 500px !important
+}
+#descriptionx { 
+  width: 350px !important
+}
+.row-image:hover { 
+  background-color: #F4F6F6;
+  cursor: pointer;
+}
+#image-caption { 
+  height: 50% !important;
+  width: 50% !important;
+  margin-left: 70px;  
+  margin-top: 10px; 
+}
+.login-form {
+  background: #f5fbfb;
+  border: 1px solid #eee;
+  padding: 30px;
+  max-width: 500px;
+  margin: 5% auto;
+}
+button[type="submit"] {
+  padding: 10px 32px;
+  border: none;
+  background: teal;
+  color: #fff;
+  outline: none;
+  box-shadow: 1px 1px 1px 1px #888888;
+}
+.existing {
+  color: #222;
+}
+.existing-span {
+  color: teal;
+  text-decoration: underline;
+}
+.menu {
+  display: flex;
+}
+.jumbo {
+  max-width: 100%;
+}
+.card-body { 
+  text-align: center
+}
+.row-image { 
+  margin-bottom: 20px
+}
+.close {
+  margin-left: 60%;
+}
+.banner img {
+  width: 100%;
+  height: auto;
+}
+.main {
+  text-align: center;
+  margin-top:  20px;
+}
+.page-footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  color: #eee;
+  padding: 20px;
+}
+.about h5 {
+  margin-top: 30px;
+}
+.about h6 {
+  color: #000;
+}
+.page-footer li {
+  list-style: none;
+}
+.page-footer li a {
+  color: #eee;
+}
+.main h4 {
+  font-size: 20px;
+}
+.spirout {
+  position: absolute;
+  left: 43%;
+  top: 2%
+}
+.row-cards { 
+  margin-top: 30px
+}
+
+.hover-button:hover { 
+  cursor: pointer;
+  background-color: #F4F6F6;
+}
+.spirout img {
+  max-width: 150px;
+  max-height: 50px;
+  margin-top: 10px;
+}
+.brand-logo .center {
+  display: flex;
+}
+i.description {
+  color: teal;
+  margin-top: 10px;
+}
+.fa-times {
+  color: teal;
+}
+.login-nav {
+  cursor: pointer;
+}
+.thumbnail {
+  max-height: 80px;
+  max-width: 80px;
+  margin: 2% auto;
+}
+/* .card .card-title {
+  text-align: center;
+  font-size: 16px;
+} */
+.page-footer {
+  background: #34495E;
+}
+.card-tinng { 
+  margin-right: 250px !important;
+  width: 250px !important; 
+  margin-bottom: 10px
+}
+
+.row-cardsx { 
+  padding-left: 0px !important
+}
+@media screen and (max-width: 480px) {
+
+h4 {
+  font-size: 24px;
+}
+.spirout {
+  position: absolute;
+  left: 37%;
+  
+}
+.login-form {
+  background: #fff;
+}
+.spirout img {
+  max-width: 100px;
+  max-height: 30px;
+  /* margin-top: 15px; */
+}
+
+.main {
+  text-align: center;
+}
+.main h4 {
+  font-size: 16px;
+}
+/* .card .card-title {
+  font-size: 16px;
+}
+.card {
+  height: 150px;
+}
+.card-content {
+  font-size: 14px;
+} */
+
+.thumbnail {
+  max-height: 60px;
+  max-width: 60px;
+  margin: 2% auto;
+}
+img.thumbnail {
+  margin: 7% 30%;
+}
+.banner {
+  width: 100%;
+  height: 140px;
+  background-image: url('./banner.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.login-nav {
+  display: none;
+}
+}
+
+@media screen and (min-width: 481px) and (max-width: 540px) {
+  .banner {
+    width: 100%;
+    height: 160px;
+    background-image: url('./banner.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+  .spirout {
+    position: absolute;
+    left: 38%;
+  }
+.spirout img {
+  max-width: 130px;
+  max-height: 40px;
+  margin-top: 15px;
+}
+.thumbnail {
+  max-height: 80px;
+  max-width: 80px;
+  margin: 2% auto;
+}
+img.thumbnail {
+  margin: 7% 30%;
+}
+.login-nav {
+  display: none;
+}
+}
+@media screen and (min-width: 541px) and (max-width: 640px) {
+  .banner {
+    width: 100%;
+    height: 180px;
+    background-image: url('./banner.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+  .spirout {
+    position: absolute;
+    left: 38%;
+  }
+.spirout img {
+  max-width: 130px;
+  max-height: 40px;
+  margin-top: 15px;
+}
+.thumbnail {
+  max-height: 80px;
+  max-width: 80px;
+  margin: 2% auto;
+}
+img.thumbnail {
+  margin: 7% 30%;
+}
+}
+@media screen and (min-width: 641px) and (max-width: 768px) {
+  .banner {
+    width: 100%;
+    height: 220px;
+    background-image: url('./banner.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+  .spirout {
+    position: absolute;
+    left: 38%;
+  }
+.spirout img {
+  max-width: 130px;
+  max-height: 40px;
+  margin-top: 15px;
+}
+.thumbnail {
+  max-height: 80px;
+  max-width: 80px;
+  margin: 2% auto;
+}
+img.thumbnail {
+  margin: 7% 30%;
+}
+}
+@media screen and (min-width: 769px) and (max-width: 848px) {
+  .banner {
+    width: 100%;
+    height: 240px;
+    background-image: url('./banner.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+  .spirout {
+    position: absolute;
+    left: 39%;
+  }
+.spirout img {
+  max-width: 130px;
+  max-height: 40px;
+  margin-top: 15px;
+}
+.thumbnail {
+  max-height: 80px;
+  max-width: 80px;
+  margin: 2% auto;
+}
+img.thumbnail {
+  margin: 7% 30%;
+}
+}
+@media screen and (min-width: 849px) and (max-width: 1024px) {
+  .banner {
+    width: 100%;
+    height: 300px;
+    background-image: url('./banner.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+  .spirout {
+    position: absolute;
+    left: 43%;
+  }
+.spirout img {
+  max-width: 130px;
+  max-height: 40px;
+  margin-top: 15px;
+}
+.thumbnail {
+  max-height: 80px;
+  max-width: 80px;
+  margin: 2% auto;
+}
+img.thumbnail {
+  margin: 7% 30%;
+}
+}
+@media screen and (min-width: 1025px) and (max-width: 1366px) {
+  .banner {
+    width: 100%;
+    height: 360px;
+    background-image: url('./banner.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+  .spirout {
+    position: absolute;
+    left: 45%;
+  }
+.spirout img {
+  max-width: 130px;
+  max-height: 40px;
+  margin-top: 15px;
+}
+.thumbnail {
+  max-height: 100px;
+  max-width: 100px;
+  margin: 2% auto;
+}
+img.thumbnail {
+  margin: 7% 30%;
+}
+}
+@media screen and (min-width: 1366px) {
+  .banner {
+    width: 100%;
+    height: 450px;
+    background-image: url('./banner.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+  .spirout {
+    position: absolute;
+    left: 45%;
+  }
+.spirout img {
+  max-width: 130px;
+  max-height: 40px;
+  margin-top: 15px;
+}
+.thumbnail {
+  max-height: 100px;
+  max-width: 100px;
+  margin: 2% auto;
+}
+img.thumbnail {
+  margin: 7% 30%;
+}
+}

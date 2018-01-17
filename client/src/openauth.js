@@ -1,10 +1,10 @@
 const helpers = {
   
-  setCookie = (session_id) => {
+  setCookie: function (session_id) {
   document.cookie = `sessionid=${session_id}; expires= Mon, 1 Jan 2023 12:00:00 UTC`;
 }, 
 
-readCookie = (sessionid) => {
+readCookie: function (sessionid) {
          var name = sessionid + "=";
          var decodedCookie = decodeURIComponent(document.cookie);
          var ca = decodedCookie.split(';');
@@ -15,22 +15,24 @@ readCookie = (sessionid) => {
              }
              if (c.indexOf(name) === 0) {
                //get the sessionid
+               console.log(c.substring)
                  return c.substring(name.length, c.length)
-                 console.log(c.substring)
+                 
              } else {
                console.log('Oops we found nothing here')
+               return null;
                // this.props.history.push('/autho')
              }
          }
          return "";
      },
-     logger = () => {
+     logger: function () {
         console.log("working")
      }
      
     }
 
-    module.exports = helpers
+    export default helpers
 
     
 // confirmPassword = (password, secondpassword) => {

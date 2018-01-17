@@ -6,6 +6,22 @@ var Session = require('../models/session')
 var User = require('../models/user')
 var router = express.Router()
 
+router.get('/:sessionid/user', function(req, res){
+    console.log('hello')
+    Session.findById(req.params.sessionid, function(err, session){
+      if(err){
+        console.log(err)
+      } else {
+        if(session == null ){
+          res.json({ status: 504, message: 'Theres no one in session'})
+        } else {
+          User.findById(session.user_id, function(err, currentuser){
+            if(err){
+              console.log(err)}
+       else { 
+        console.log(currentuser)   
+        res.json({ status: 500, currentsession: session, currentuser: currentuser})}})}}})})
+
 router.get('/search/:query', function(req, res){
   //check the querystring
   if(req.params.query.indexOf('-') == -1) {

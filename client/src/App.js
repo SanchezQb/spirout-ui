@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Nav from './Components/Layout/Nav'
 import './App.css';
-import Customers from './Components/Customers/Customers.js'
+import Main from './Components/Main';
+import Footer from './Components/Footer';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Nav />
+        <Main />
+        <Footer />
       </div>
     );
   }
