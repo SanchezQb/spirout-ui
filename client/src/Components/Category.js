@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import banner from '../banner.jpg'
-import banner2 from '../banner2.jpg'
+import Nav from './Layout/Nav'
 
 
 class Category extends Component {
@@ -42,43 +41,15 @@ class Category extends Component {
             )
         })
         return (
-            <div className="category" id='category'>
-                 {/* <div class="carousel carousel-slider">
-                    <a class="carousel-item" href="#one!"><img src={banner}/></a>
-                    <a class="carousel-item" href="#two!"><img src={banner2}/></a>
-                </div> */}
-                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                <div id='overlay'></div>
-                <div className='centered'>
-              <h3> Upload your content and get paid </h3>
-              </div> 
-
-        <div class="carousel-inner">
-     <div class="carousel-item active">
-        <img class="d-block w-100" src={banner} alt="First slide"/>
-     </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src={banner2} alt="Second slide"/>
-    </div>
-  </div>
-</div>
-                    {/* <div className='jumbo'>
-                        <div className='caption'>
-                            <h5 id='main-text'> Create. Upload. Get Paid </h5>
-                            <h6 className='signature'> Sign up, share your content with the world and  get paid </h6>
-                             </div> 
-                     </div>  */}
-                <div className="main">
-                    <h4>Content Categories</h4>
-                </div>
-                <div className="container">
-                    <div className="row row-cards">
-                        
-                            {categories}
-                       
-                    </div>
-                </div>
-                
+            <div>
+                <Nav />
+                <section id="main">
+                        <div className="banner">
+                            <h1>Buy and sell your content securely</h1>
+                            <a href="#categories" className="start">Buy Content</a>
+                            <a href="#" className="start">Sell Content</a>
+                        </div>
+                </section>
             </div>
         )
     }

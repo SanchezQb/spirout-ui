@@ -1,57 +1,55 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Nav from './Layout/Nav'
 
 class Request extends Component {
     render() {
         return (
-            <div className="login-form">
-                <h5>Request Content</h5>
-                 <div className="row">
-                    <form className="col s12">
-                        <div className="row">
-                            <div className="input-field col s12">
-                            <input id="topic" type="text" className="validate"/>
-                            <label htmlFor="topic">Topic</label>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="input-field col s12">
-                            <input id="words" type="number" className="validate"/>
-                            <label htmlFor="words">Number of words</label>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <input id="category" type="text" className="validate"/>
-                                <label htmlFor="category">Category</label>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <input id="duration" type="text" className="validate"/>
-                                <label htmlFor="duration">Duration</label>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <input id="content-type" type="text" className="validate"/>
-                                <label htmlFor="content-type">Type of Contnet</label>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div class="input-field col s12">
-                                <textarea id="description" className="materialize-textarea" data-length="120"></textarea>
-                                <label htmlFor="description">Description</label>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="input-field col s6">
-                            <button className="waves-effect waves-light" type="submit">Submit</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            <section>
+                <Nav />
+                <form>
+                    <h2>Request Content</h2>
+                    <div>
+                        <label for="topic">Topic</label><br />
+                        <input id="topic" type="text"/>
+                    </div>
+                    <div>
+                        <label for="description">Description</label><br />
+                        <textarea></textarea>
+                    </div>
+                    <div>
+                        <label for="category">Category</label><br />
+                        <select>
+                            <option disabled>Please select category</option>
+                            <option>Society</option>
+                            <option>Social Media</option>
+                            <option>Health and Lifestyle</option>
+                            <option>Science</option>
+                            <option>Fashion</option>
+                            <option>Relationship</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="words">Number of words</label><br />
+                        <input id="words" type="number"/>
+                    </div>
+                    <div>
+                        <label for="type">Content Type</label><br />
+                        <select>
+                            <option disabled>Please select content type</option>
+                            <option>Written</option>
+                            <option>Visual</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="duration">Duration</label><br />
+                        <input id="duration" type="text"/>
+                    </div>
+                    <div>
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </section>
         )
     }
 }

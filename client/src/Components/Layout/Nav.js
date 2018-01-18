@@ -60,6 +60,7 @@ class Nav extends Component {
                        status: "Login/Signup"
                    })
                    document.cookie = "sessionid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+                   this.props.history.push('/login')
                }
                else {
 
@@ -68,62 +69,31 @@ class Nav extends Component {
         }
     }
 
-    openNav = () => {
-        document.getElementById("mySidenav").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "250px" }
-    
-     closeNav = () => {
-        document.getElementById("mySidenav").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0"; };
-    
     render() {
         return (
             <div>
-              
-                {/* <div className="nav-wrapper">
-                <a href="" data-activates="main-menu" onClick={() => this.openNav()}className="nav-item button-collapse show-on-large"><i className="fa fa-bars"></i></a>
-                <div className = "spirout">
-                    <Link to="/"><img src="/img/icons-01.png" alt="logo" /></Link>
-                </div>
-                <ul className="navbar-nav right">
-                    <li><Link to="/upload"><i className="nav-item nav-link fa fa-upload"></i></Link></li>
-                    <li className="nav-item nav-link login-nav" onClick={() => this.navigate()}>{this.state.status}</li>
-                    <li className='nav-item nav-link'><Link to="/search"><i className="fa fa-search"></i></Link></li>
-                </ul> */}
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#"><div className='spirout'><img src="/img/icons-01.png" alt="logo" /></div></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/upload">Upload</a>
-      </li>
-      <li class="nav-item ml-auto">
-        <a class="nav-link" href="#">Logged in as {this.state.user}</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-                {/* <ul className="side-nav" id="main-menu"> */}
-                    {/* <ul id="mySidenav" className="sidenav"> 
-                    <div className="menu">
-                    <h6>MENU</h6>
-                    <h6 className="close" onClick={() => this.closeNav()}>X</h6>
-                    </div>
-                    <li id='navlistx'><Link to="/upload">Upload Content</Link></li>
-                    <li id='navlistx'><Link to="/upload">Request Content</Link></li>
-                    <li id='navlistx'><a href="badges.html">Logout</a></li>
-                    <li id='navlistx'><Link to="/about">About Spirout</Link></li>
-                </ul> */}
-                </div>
+                <Link to="/pay">
+                <svg id="i-cart" className="cart-icon" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
+                    <path d="M6 6 L30 6 27 19 9 19 M27 23 L10 23 5 2 2 2" />
+                    <circle cx="25" cy="27" r="2" />
+                    <circle cx="12" cy="27" r="2" />
+                </svg>
+                </Link>
+                <nav>
+                    <div className="logo"></div>
+                    <Link to="/">Home</Link> 
+                    <a href="#">How it works</a> 
+                    <a href="#"  onClick={() => this.navigate()}>{this.state.status}</a>
+                    <a></a> 
+                    <Link to="/pay">
+                    <svg id="i-cart" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
+                        <path d="M6 6 L30 6 27 19 9 19 M27 23 L10 23 5 2 2 2" />
+                        <circle cx="25" cy="27" r="2" />
+                        <circle cx="12" cy="27" r="2" />
+                    </svg>
+                    </Link>
+                </nav>
+            </div>
            
         )
     }

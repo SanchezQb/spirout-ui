@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import helpers from '../openauth'
+import Nav from './Layout/Nav'
 
 class LoginPage extends Component {
     constructor(props) {
@@ -48,37 +49,36 @@ componentDidMount () {
 
     render() {
         return (
-            <div className="login-form">
-                <h5>Log In</h5>
-                <form method="POST" onSubmit={this.handleSubmit}>
-                <div className="row">
-                <div class="form-group">
-    <label for="exampleInputPassword1"> Username</label>
-    <input type="text" class="form-control" id='descriptionx' ref='username' />
-  </div>
-                </div>
-                <div class="form-group">
-        <label for="exampleInputPassword1"> Password</label>
-        <input type="password" class="form-control" id='descriptionx' ref='password' />
-     </div>
-            
-                    <button className="btn"type="submit">Login</button>
-                    <div className="row">
-                        <div className="form-group col sm-6">
-                            <p className="existing-span"><Link to>Forgot password</Link></p>
+            <div>
+                <Nav />
+                <section>
+                    <form method="POST" onSubmit={this.handleSubmit}>
+                        <h2>Login</h2>
+                        <div>
+                            <label htmlFor="username">Username</label><br />
+                            <input id="username" type="text" ref="username"/>
                         </div>
-                        <div className="form-group col sm-6">
-                            <p className="existing">Or Register <span className="existing-span"><Link to="/signup">here</Link></span></p>
+                        <div>
+                            <label htmlFor="password">Password</label><br />
+                            <input id="password" type="password" ref="password"/>
                         </div>
-                    </div>
-                    <div class="alert alert-danger" role="alert" style={{opacity: this.state.opacity, color: 'red'}}>
-                            {this.state.message} <span style={{float: 'right'}} onClick={() => { this.setState({opacity: 0})}}>  x </span> 
+                        <div>
+                            <button type="submit">Log in</button>
                         </div>
-            
-                </form>
+                        <div className="alert alert-danger" role="alert" style={{opacity: this.state.opacity, color: 'red'}}>
+                            {this.state.message} <span style={{float: 'right'}} onClick={() => { this.setState({opacity: 0})}}></span> 
+                        </div>
+                        <div>
+                            <p>Don't have an account yet? Register <Link to="/signup"><span>here</span></Link></p>
+                        </div>
+                        
+                    </form>
+                </section>
             </div>
+            
         )
     }
 }
 
 export default LoginPage
+

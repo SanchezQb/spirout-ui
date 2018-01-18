@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import helpers from '../openauth'
+import Nav from './Layout/Nav'
 
 
 class SignupPage extends Component {
@@ -64,92 +65,45 @@ class SignupPage extends Component {
 
     render() {
         return (
-            <div className="login-form">
-                <h5>Sign Up</h5>
-                 <div className="row">
-                    {/* <form className="col s12" onSubmit={this.handleSubmit}>
-                        <div className="row">
-                            <div className="input-field col s6">
-                            <input id="first_name" type="text" className="validate" name="first_name" ref="first_name"/>
-                            <label htmlFor="first_name">First Name</label>
-                            </div>
-                            <div className="input-field col s6">
-                            <input id="last_name" type="text" className="validate" name="last_name" ref="last_name"/>
-                            <label htmlFor="last_name">Last Name</label>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="input-field col s12">
-                            <input id="username" type="text" className="validate" name="username" ref="username"/>
-                            <label htmlFor="username">Username</label>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="input-field col s12">
-                            <input id="email" type="email" className="validate" name="email" ref="email"/>
-                            <label htmlFor="email">Email</label>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="input-field col s6">
-                            <input id="password" type="password" className="validate" name="password" ref="password"/>
-                            <label htmlFor="password">Password</label>
-                            </div>
-                            <div className="input-field col s6">
-                            <input id="password2" type="password" className="validate" name="password2" ref="password2"/>
-                            <label htmlFor="password2">Confirm Password</label>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="input-field col s6">
-                            <button className="waves-effect waves-light" type="submit">Sign Up</button>
-                            </div>
-                            <div className="col s6">
-                            <p className="existing">Already a user? <span className="existing-span"><Link to="/login">Log in here</Link></span></p>
-                            </div>
-                        </div>
-                        <div style={{opacity: this.state.opacity, color: 'red'}}>
-                            {this.state.message}
-                        </div>
-                        </form> */}
-<form onSubmit={this.handleSubmit}>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Firstname</label>
-    <input type="text" class="form-control" id='descriptionx' ref='first_name'/>
-  </div>
-
-  <div class="form-group">
-    <label for="exampleInputPassword1">Lastname</label>
-    <input type="text" class="form-control " id='descriptionx' ref='last_name'/>
-  </div>
-
-  <div class="form-group">
-    <label for="exampleInputPassword1">Username</label>
-    <input type="text" class="form-control"id='descriptionx' ref='username' />
-  </div>
-
-  <div class="form-group">
-    <label for="exampleInputPassword1">email</label>
-    <input type="email" class="form-control" id='descriptionx' ref='email' />
-  </div>
-
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id='descriptionx' ref='password' />
-  </div>
-
-  <div class="form-group">
-    <label for="exampleInputPassword1"> Confirm Password</label>
-    <input type="password" class="form-control" id='descriptionx' ref='password2' />
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-  <div class="alert alert-danger" role="alert" style={{opacity: this.state.opacity, color: 'red'}}>
-                            {this.state.message} <span style={{float: 'right'}} onClick={() => { this.setState({opacity: 0})}}>  x </span> 
-                        </div>
-                
-</form>
-                </div>
-            </div>
+            <section>
+                <Nav />
+                <form method="POST" onSubmit={this.handleSubmit}>
+                    <h2>Signup</h2>
+                    <div>
+                        <label htmlFor="first_name">First Name</label><br />
+                        <input id="first_name" type="text" ref="first_name" required/>
+                    </div>
+                    <div>
+                        <label htmlFor="last_name">Last Name</label><br />
+                        <input id="last_name" type="text" ref="last_name" required/>
+                    </div>
+                    <div>
+                        <label htmlFor="email">Email Address</label><br />
+                        <input id="email" type="email" ref="email" required/>
+                    </div>
+                    <div>
+                        <label htmlFor="username">Username</label><br />
+                        <input id="username" type="text" ref="username" required/>
+                    </div>
+                    <div>
+                        <label htmlFor="password">Password</label><br />
+                        <input id="password" type="password" ref="password" required/>
+                    </div>
+                    <div>
+                        <label htmlFor="password2">Confirm Password</label><br />
+                        <input id="password2" type="password" ref="password2" required/>
+                    </div>
+                    <div>
+                        <button type="submit">Sign Up</button>
+                    </div>
+                    <div>
+                        <p>Already have an account? Log in <Link to="/login"><span>here</span></Link></p>
+                    </div>
+                    <div className="alert alert-danger" role="alert" style={{opacity: this.state.opacity, color: 'red'}}>
+                        {this.state.message} <span style={{float: 'right'}} onClick={() => { this.setState({opacity: 0})}}>  x </span> 
+                    </div>
+                </form>
+            </section>
         )
     }
 }

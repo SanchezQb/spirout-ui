@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import helpers from '../openauth'
 import axios from 'axios'
+import Nav from './Layout/Nav'
 
 
 class Upload extends Component {
@@ -93,50 +93,49 @@ class Upload extends Component {
             } else { content = null}
 
         return (
-            <div className='container' id='form-ting'>
-            <div style={{ marginBottom: 30 + 'px', marginLeft: 50 + 'px'}}><h3> Upload Content </h3> </div>
-    <form method="POST" onSubmit={this.handleSubmit}>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Topic</label>
-    <input type="text" class="form-control" ref='name'/>
-  </div>
-
-  <div class="form-group">
-    <label for="exampleInputPassword1">Description</label>
-    <input type="text" class="form-control" id='description' ref='description'/>
-  </div>
-
-  <div class="form-group">
-    <label for="exampleInputPassword1">Price</label>
-    <input type="number" class="form-control" ref='price' />
-  </div>
-
-  
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Category</label>
-    <select class="form-control" id="exampleFormControlSelect1" ref='category'>
-     {content}
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Type</label>
-    <select class="form-control" id="exampleFormControlSelect1" ref='type'>
-            <option>Written </option>
-            <option> Visual </option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlFile1"></label>
-    <input type="file" class="form-control-file" id="exampleFormControlFile1" ref='file'/>
-  </div>
-
-  <button type='submit'class="btn btn-primary">Submit</button>
-</form>
-<div class="alert alert-danger" role="alert" style={{opacity: this.state.opacity, color: 'red'}}>
-                            {this.state.message} <span style={{float: 'right'}} onClick={() => { this.setState({opacity: 0})}}>  x </span> 
-                        </div>
-                </div>
+            <section>
+                <Nav />
+                <form>
+                    <h2>Upload Content</h2>
+                    <div>
+                        <label for="topic">Topic</label><br />
+                        <input id="topic" type="text" ref="name" required/>
+                    </div>
+                    <div>
+                        <label for="description">Description</label><br />
+                        <textarea ref="description" required></textarea>
+                    </div>
+                    <div>
+                        <label for="category">Category</label><br />
+                        <select ref="category">
+                            <option disabled>Please select category</option>
+                            { content }
+                        </select>
+                    </div>
+                    <div>
+                        <label for="price">Price</label><br />
+                        <input id="price" type="number" ref="price" required/>
+                    </div>
+                    <div>
+                        <label for="type">Content Type</label><br />
+                        <select ref="type">
+                            <option disabled>Please select content type</option>
+                            <option>Written</option>
+                            <option>Visual</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="file">Upload file</label><br />
+                        <input id="file" type="file" ref="file" required />
+                    </div>
+                    <div>
+                        <button type="submit">Upload</button>
+                    </div>
+                    <div className="alert alert-danger" role="alert" style={{opacity: this.state.opacity, color: 'red'}}>
+                        {this.state.message} <span style={{float: 'right'}} onClick={() => { this.setState({opacity: 0})}}>  x </span> 
+                    </div>
+                </form>
+            </section>
             
         )
     }
